@@ -7,11 +7,11 @@ workspace "GraphicsFromScratch"
     }
 
 project_name = "Template"
-project_pre  = "temp"
+project_pre  = "TEMP"
 outputdir = "%{cfg.system}-%{cfg.architecture}"
 
 project (project_name)
-    location (project_name)
+    location "src"
     kind "ConsoleApp"
     language "C++"
 
@@ -20,8 +20,8 @@ project (project_name)
 
     files
     {
-        "%{prj.name}/src/**.hpp",
-        "%{prj.name}/src/**.cpp"
+        "src/**.hpp",
+        "src/**.cpp"
     }
 
     links
@@ -33,3 +33,6 @@ project (project_name)
     filter "configurations:Debug"
         defines (project_pre .. "_DEBUG")
         symbols "On"
+    -- filter "configurations:Prod"
+    --     defines (project_pre .. "_PROD")
+    --     optimize "On"
